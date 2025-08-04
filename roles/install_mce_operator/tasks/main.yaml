@@ -24,7 +24,7 @@
     kind: Namespace
     name: "{{ hcp.asc.mce_namespace }}"
     state: present
-  when: namespace_check.resources | length == 0
+  when: namespace_check.resources is not defined or namespace_check.resources | length == 0
 
 - name: Create OperatorGroup.yaml
   ansible.builtin.template:
